@@ -1,6 +1,6 @@
 import {Router} from "express";
-import {getLoggedUser,getUsers} from "../controllers/user.controller.js";
-import {createPersonalSerie,deletePersonalSerieById,getSerieByUser,editPersonalSerie} from "../controllers/serie.controller.js";
+import { getUsers,getLoggedUser } from "../../src/controllers/user.controller.js";
+import {createPersonalSerie,deletePersonalSerieById,getSerieByUser,editPersonalSerie} from "../../src/controllers/serie.controller.js";
 const router = Router();
 
 

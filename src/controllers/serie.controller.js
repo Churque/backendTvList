@@ -1,4 +1,4 @@
-import SerieModel from "../src/models/serie.model.js";
+import SerieModel from "../models/serie.model.js";
 
 async function createPersonalSerie(req, res) {
   try {

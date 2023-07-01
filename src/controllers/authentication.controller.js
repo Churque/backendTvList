@@ -26,7 +26,7 @@ async function createUser(req, res) {
         });
     } else {
       await createdUser.save();
-      return res.status(201).send({ response: createdUser });
+      return res.status(201).send({ sucess: true });
     }
   } catch (error) {
     console.log(error);

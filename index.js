@@ -1,9 +1,9 @@
 import express from "express";
 import cors from 'cors';
-import connect from './configs/mongo.js';
-import authenticacionRouter from './routes/authentication.routes.js';
-import usersRouter from './routes/user.routes.js';
-import seriesRouter from './routes/serie.routes.js';
+import connect from "./src/configs/mongo.js";
+import authenticacionRouter from './src/routes/authentication.routes.js'
+import usersRouter from './src/routes/user.routes.js'
+import seriesRouter from './src/routes/serie.routes.js';
 
 
 
