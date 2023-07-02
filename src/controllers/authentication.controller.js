@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import { generateToken } from "../utils/jwt.js";
 
 
 async function createUser(req, res) {
@@ -51,7 +52,8 @@ async function loginUser(req, res) {
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (isMatch) {
-      res.send({ logged: "found user" });
+      const token = generateToken(user);
+      return res.status(200).send({ user, token });
     } else {
       res.send({ logged: "wrong password" });
     }
