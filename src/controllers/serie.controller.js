@@ -45,6 +45,7 @@ async function getSerieByUser(req, res) {
   const userId = req.params.userId;
   const series = await SerieModel.find({ userId: userId });
   res.send({ series });
+ //res.status(200).send({"todo": "bien"});
 }
 
 async function deletePersonalSerieById(req,res){

@@ -11,6 +11,7 @@ async function createUser(req, res) {
       name: req.body.name,
       email: req.body.email,
       password: encryptedPassword,
+      roles: req.body.roles,
     });
     const users = await User.find().populate("name");
     const matchUser = users.find(

@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         min: 3,
     },
+    roles: {
+        type: String,
+        required: true,
+        min: 3,
+    }
 });
 
 const userModel = mongoose.model('User', userSchema);
