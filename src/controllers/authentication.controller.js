@@ -24,7 +24,7 @@ async function createUser(req, res) {
         .status(400)
         .send({
           error:
-            "Error falta campo o ya los datos ya fueron utilizados para crear un usuario",
+            "Usuario ya existente",
         });
     } else {
       await createdUser.save();
