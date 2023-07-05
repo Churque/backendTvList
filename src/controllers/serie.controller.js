@@ -1,5 +1,5 @@
 import SerieModel from "../models/serie.model.js";
-
+import { verifyToken } from "../utils/jwt.js";
 async function createPersonalSerie(req, res) {
   const authorizationHeader =req.headers.authorization || req.headers.Authorization;
   const token = authorizationHeader.split(" ")[1];
