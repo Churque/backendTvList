@@ -102,12 +102,11 @@ async function getSeries(req, res) {
       const serieId = req.params.serieId;
     
       try {
-        const serie = await SerieModel.findOne({ id, _id: serieId });
+        const serie = await SerieModel.findOne({userId:id,_id: serieId });
     
         if (!serie) {
           return res.status(404).send({ error: "Serie no encontrada" });
         }
-    
         serie.estado = req.body.estado;
         await serie.save();
     
