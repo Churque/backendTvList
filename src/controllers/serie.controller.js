@@ -4,6 +4,7 @@ async function createPersonalSerie(req, res) {
   const authorizationHeader =req.headers.authorization || req.headers.Authorization;
   const token = authorizationHeader.split(" ")[1];
   const { id } = verifyToken(token);
+  if(id === req.params.userId) {
   try {
     if (!req.body.nombre || !req.body.estado || !req.body.capitulos || !req.body.minutos) {
       return res.status(400).send({ success: false, error: "Falta algún campo como nombre, estado, capítulos, minutos" });
@@ -23,8 +24,12 @@ async function createPersonalSerie(req, res) {
   }
 }
 
+return res.status(404).send({ error:"no puedes crear una serie para otro usuario"});
+}
+
 async function createGlobalSerie(req,res){
-    try {
+
+  try {
 
         if (!req.body.nombre || !req.body.estado || !req.body.capitulos || !req.body.minutos) {
           return res.status(400).send({ error: "Falta algún campo como nombre, estado, capítulos, minutos" });
@@ -49,9 +54,12 @@ async function getSerieByUser(req, res) {
   const token = authorizationHeader.split(" ")[1];
   const { id } = verifyToken(token);
   //const userId = req.params.userId;
+  if(id===req.params.userId) {
   const series = await SerieModel.find({ userId: id });
   res.send({ series });
- //res.status(200).send({"todo": "bien"});
+  }
+  res.status(200).send({"error":"no puedes ver las series de otros usuarios"});
+  //res.status(200).send({"todo": "bien"});
 }
 
 async function deletePersonalSerieById(req,res){
@@ -78,7 +86,7 @@ async function deletePersonalSerieById(req,res){
 }
 
 async function getSeries(req, res) {
-        const adminId = req.params.adminId;
+        //const adminId = req.params.adminId;
         const series = await SerieModel.find();
         res.send({ series });
 }
